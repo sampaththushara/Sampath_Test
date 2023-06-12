@@ -1,22 +1,12 @@
 # Sampath_Test - Here is the main code ...
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-namespace WindowsFormsApplication3
-{
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -30,7 +20,8 @@ namespace WindowsFormsApplication3
                 MessageBox.Show(ex.Message);
             }
         }
-        // check the last number
+
+        // Check the last number
         private string CheckLastNumeric(char[] chararray)
         {
             string LastNum = "";
@@ -44,7 +35,10 @@ namespace WindowsFormsApplication3
                     {
                         LastNum = p.ToString() + LastNum;
                     }
-                    else break;
+                    else
+                    {
+                        break;
+                    }
                 }
             }
             catch (SystemException ex)
@@ -53,7 +47,7 @@ namespace WindowsFormsApplication3
             }
             return LastNum;
         }
-
+		//increase the last digit part by 1
         private void Increment(char[] referenceNumber)
         {
             try
@@ -62,32 +56,29 @@ namespace WindowsFormsApplication3
                 string OriginalString = new string(referenceNumber);
                 if (myLastNo != "")
                 {
-     
                     string x = (int.Parse(myLastNo) + 1).ToString();
                     string y = (int.Parse(myLastNo)).ToString();
-
 
                     if (x.Length > y.Length)
                     {
                         x = x.Substring(x.Length - y.Length);
                     }
                     string newval = OriginalString.Replace(y, x);
-
-                    setmessage(newval);
+                    SetMessage(newval);
                 }
-                else setmessage(OriginalString);
-            
+                else
+                {
+                    SetMessage(OriginalString);
+                }
             }
             catch (SystemException ex)
             {
                 MessageBox.Show(ex.Message);
-                
             }
         }
-        private void setmessage(string FinVal)
+
+        private void SetMessage(string FinVal)
         {
             MessageBox.Show(FinVal);
         }
-
     }
-}
